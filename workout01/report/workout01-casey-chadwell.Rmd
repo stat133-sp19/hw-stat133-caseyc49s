@@ -3,7 +3,7 @@ title: "Workout 01"
 author: "Casey Chadwell"
 output: github_document
 ---
-```{r echo=FALSE, results='hide'}
+```{r include=FALSE}
 library(dplyr)
 ```
 
@@ -33,11 +33,122 @@ The initial files were then modified using `make-shots-data-script.R` file which
 ## Analysis
 The shot charts for the 5 GSW players that was generated from the data is shown below. 
 
+#### Shot Charts
 ```{r out.width='80%', echo = FALSE, fig.align='center'}
 knitr::include_graphics('../images/gsw-shot-charts.png')
 ```
 
+The next results obtained was effective shooting percentages for the players. 
+
+#### Effective Shooting Percentage
+
+##### Overall 2 Point Effective Shooting % by Player
+```{r echo=FALSE}
+all_shots<-read.csv('../data/shots-data.csv', stringsAsFactors = FALSE)
+
+eff_pt2 <- mutate(
+  summarise(
+    group_by(
+      filter(all_shots, 
+             shot_type == '2PT Field Goal'),
+            name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+
+eff_pt2
+```
+
+##### Overall 3 point Effective Shooting % by Player
+```{r echo=FALSE}
+eff_pt3 <- mutate(
+  summarise(
+    group_by(
+      filter(all_shots, 
+             shot_type == '3PT Field Goal'),
+            name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+
+eff_pt3
+```
+
+##### Overall Effective Shooting % by Player
+```{r echo=FALSE}
+eff <- mutate(
+  summarise(
+    group_by(
+      all_shots, 
+      name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+
+eff
+```
+
+The next thing we analyze is the effective shooting percentages by player when there is less than one minute left in the game. 
+
+##### < 1 Minute Remaining 2 Point Effective Shooting % by Player
+```{r echo = FALSE}
+m1_pt2 <- mutate(
+  summarise(
+    group_by(
+      filter(all_shots, 
+             shot_type == '2PT Field Goal', minutes_remaining < 1),
+            name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+
+m1_pt2
+```
+
+##### < 1 Minute Remaining 3 point Effective Shooting % by Player
+```{r echo = FALSE}
+m1_pt3 <- mutate(
+  summarise(
+    group_by(
+      filter(all_shots, 
+             shot_type == '3PT Field Goal',
+             minutes_remaining < 1),
+            name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+
+m1_pt3
+```
+
+##### < 1 Minute Remaining Overall Effective Shooting % by Player
+```{r}
+l1m = filter(all_shots, minutes_remaining < 1)
+l1mbp = mutate(
+  summarise(
+    group_by(
+      l1m, 
+      name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+l1mbp
+```
+
 ## Discussion
+From this, we can see than 
 
 ## Conclusions
 

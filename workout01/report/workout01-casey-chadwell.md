@@ -2,19 +2,6 @@ Workout 01
 ================
 Casey Chadwell
 
-    ## Warning: package 'dplyr' was built under R version 3.5.3
-
-    ## 
-    ## Attaching package: 'dplyr'
-
-    ## The following objects are masked from 'package:stats':
-    ## 
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ## 
-    ##     intersect, setdiff, setequal, union
-
 Shooting Statistics for Select Golden State Warriors players
 ============================================================
 
@@ -47,10 +34,101 @@ Analysis
 
 The shot charts for the 5 GSW players that was generated from the data is shown below.
 
+#### Shot Charts
+
 <img src="../images/gsw-shot-charts.png" width="80%" style="display: block; margin: auto;" />
+
+The next results obtained was effective shooting percentages for the players.
+
+#### Effective Shooting Percentage
+
+##### Overall 2 Point Effective Shooting % by Player
+
+    ## # A tibble: 5 x 4
+    ##   name           total  made perc_made
+    ##   <chr>          <int> <int>     <dbl>
+    ## 1 Andre Iguodala   210   134     0.638
+    ## 2 Draymond Green   346   171     0.494
+    ## 3 Kevin Durant     643   390     0.607
+    ## 4 Klay Thompson    640   329     0.514
+    ## 5 Stephen Curry    563   304     0.540
+
+##### Overall 3 point Effective Shooting % by Player
+
+    ## # A tibble: 5 x 4
+    ##   name           total  made perc_made
+    ##   <chr>          <int> <int>     <dbl>
+    ## 1 Andre Iguodala   161    58     0.360
+    ## 2 Draymond Green   232    74     0.319
+    ## 3 Kevin Durant     272   105     0.386
+    ## 4 Klay Thompson    580   246     0.424
+    ## 5 Stephen Curry    687   280     0.408
+
+##### Overall Effective Shooting % by Player
+
+    ## # A tibble: 5 x 4
+    ##   name           total  made perc_made
+    ##   <chr>          <int> <int>     <dbl>
+    ## 1 Andre Iguodala   371   192     0.518
+    ## 2 Draymond Green   578   245     0.424
+    ## 3 Kevin Durant     915   495     0.541
+    ## 4 Klay Thompson   1220   575     0.471
+    ## 5 Stephen Curry   1250   584     0.467
+
+The next thing we analyze is the effective shooting percentages by player when there is less than one minute left in the game.
+
+##### &lt; 1 Minute Remaining 2 Point Effective Shooting % by Player
+
+    ## # A tibble: 5 x 4
+    ##   name           total  made perc_made
+    ##   <chr>          <int> <int>     <dbl>
+    ## 1 Andre Iguodala    36    28     0.778
+    ## 2 Draymond Green    24    13     0.542
+    ## 3 Kevin Durant      48    28     0.583
+    ## 4 Klay Thompson     30    17     0.567
+    ## 5 Stephen Curry     59    32     0.542
+
+##### &lt; 1 Minute Remaining 3 point Effective Shooting % by Player
+
+    ## # A tibble: 5 x 4
+    ##   name           total  made perc_made
+    ##   <chr>          <int> <int>     <dbl>
+    ## 1 Andre Iguodala    22     7     0.318
+    ## 2 Draymond Green    22     3     0.136
+    ## 3 Kevin Durant      38    14     0.368
+    ## 4 Klay Thompson     31    12     0.387
+    ## 5 Stephen Curry    114    33     0.289
+
+##### &lt; 1 Minute Remaining Overall Effective Shooting % by Player
+
+``` r
+l1m = filter(all_shots, minutes_remaining < 1)
+l1mbp = mutate(
+  summarise(
+    group_by(
+      l1m, 
+      name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+l1mbp
+```
+
+    ## # A tibble: 5 x 4
+    ##   name           total  made perc_made
+    ##   <chr>          <int> <int>     <dbl>
+    ## 1 Andre Iguodala    58    35     0.603
+    ## 2 Draymond Green    46    16     0.348
+    ## 3 Kevin Durant      86    42     0.488
+    ## 4 Klay Thompson     61    29     0.475
+    ## 5 Stephen Curry    173    65     0.376
 
 Discussion
 ----------
+
+From this, we can see than
 
 Conclusions
 -----------

@@ -31,8 +31,9 @@ sc['name'] = 'Stephen Curry'
 
 # Change the shot made flag
 ai_idx = which(ai['shot_made_flag'] == 'y')
+ai_idx2 = which(ai['shot_made_flag'] == 'n')
 ai[ai_idx, 'shot_made_flag'] = 'shot_yes'
-ai[-ai_idx, 'shot_made_flag'] = 'shot_no'
+ai[ai_idx2, 'shot_made_flag'] = 'shot_no'
 
 dg_idx = which(dg['shot_made_flag'] == 'y')
 dg[dg_idx, 'shot_made_flag'] = 'shot_yes'
@@ -43,8 +44,9 @@ kd[kd_idx, 'shot_made_flag'] = 'shot_yes'
 kd[-kd_idx, 'shot_made_flag'] = 'shot_no'
 
 kt_idx = which(kt['shot_made_flag'] == 'y')
+kt_idx2 = which(ai['shot_made_flag'] == 'n')
 kt[kt_idx, 'shot_made_flag'] = 'shot_yes'
-kt[-kt_idx, 'shot_made_flag'] = 'shot_ no'
+kt[kt_idx2, 'shot_made_flag'] = 'shot_ no'
 
 sc_idx = which(sc['shot_made_flag'] == 'y')
 sc[sc_idx, 'shot_made_flag'] = 'shot_yes'

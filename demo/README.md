@@ -1,6 +1,6 @@
 # Demo
 
-This is just a demo folder with some dummy content.
+This is just a demo folder for testing purposes
 
 A quote:
 
@@ -8,7 +8,7 @@ A quote:
 > But I think I have ended up where I needed to be."
 >
 > Douglas Adams.
- 
+
 
 An unordered list:
 
@@ -54,4 +54,3 @@ Some emojis:
 And finally an image:
 
 ![R-logo](https://www.r-project.org/logo/Rlogo.png)
-

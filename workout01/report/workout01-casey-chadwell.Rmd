@@ -1,0 +1,194 @@
+---
+title: "Workout 01"
+author: "C"
+output: github_document
+---
+```{r}
+library(dplyr)
+```
+
+# Shooting Statistics for Select Golden State Warriors players
+
+Shooting statistics were once only made available to professionals, but the new world of open data is changing that. Now the data is available online to anyone who wants to see it! With that comes a great number of possibilities and insights on the game, even for amateur data analysts. These insights could be used for anyting from recruitment to instagram retweets, and mayve even for salary increases. 
+
+One popularly quoted metric for a player's skill is their shooting average. But what does that mean? In this article, we will use some basic data techniques to gain insights into the 2016 season for Golden State Warriors players Andre Iguodala, Draymond Green, Kevin Durant, Klay Thompson, and Stephen Curry. First we will see where their shots, and missed shots, took place. Then we will examine their Effective Shooting Percentage. From there, we will see where the data leads and perhaps discover something unexpected. 
+
+## Background
+
+For
+
+## Data
+
+## Analysis
+
+## Discussion
+
+## Conclusions
+
+## References
+
+## Effective Shooting Percentage
+
+### Table 1: 2PT Effective Shooting % by Player
+```{r}
+all_shots<-read.csv('../data/shots-data.csv', stringsAsFactors = FALSE)
+
+eff_pt2 <- mutate(
+  summarise(
+    group_by(
+      filter(all_shots, 
+             shot_type == '2PT Field Goal'),
+            name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+
+eff_pt2
+```
+
+### Table 2: 3PT Effective Shooting % by Player
+```{r}
+eff_pt3 <- mutate(
+  summarise(
+    group_by(
+      filter(all_shots, 
+             shot_type == '3PT Field Goal'),
+            name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+
+eff_pt3
+```
+
+#### Table 3: Effective Shooting % by Player
+```{r}
+eff <- mutate(
+  summarise(
+    group_by(
+      all_shots, 
+      name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+
+eff
+```
+
+```{r}
+asdf <- all_shots
+l2m = filter(asdf, minutes_remaining < 2)
+l2mbp = mutate(
+  summarise(
+    group_by(
+      l2m, 
+      name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+l2mbp
+```
+
+```{r}
+asdf <- all_shots
+l1m = filter(asdf, minutes_remaining < 1)
+l1mbp = mutate(
+  summarise(
+    group_by(
+      l1m, 
+      name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+l1mbp
+```
+
+```{r}
+asdf <- all_shots
+l45 = filter(asdf, seconds_remaining < 45 & minutes_remaining == 0)
+l45bp = mutate(
+  summarise(
+    group_by(
+      l45, 
+      name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+l45bp
+```
+
+```{r}
+asdf <- all_shots
+l30 = filter(asdf, seconds_remaining < 30 & minutes_remaining == 0)
+l30bp = mutate(
+  summarise(
+    group_by(
+      l30, 
+      name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+l30bp
+```
+
+```{r}
+asdf <- all_shots
+l15 = filter(asdf, seconds_remaining < 15 & minutes_remaining == 0)
+l15bp = mutate(
+  summarise(
+    group_by(
+      l15, 
+      name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+l15bp
+```
+
+```{r}
+asdf <- all_shots
+l5 = filter(asdf, seconds_remaining < 5 & minutes_remaining == 0)
+l5bp = mutate(
+  summarise(
+    group_by(
+      l5, 
+      name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+l5bp
+```
+
+```{r}
+asdf <- all_shots
+l1 = filter(asdf, seconds_remaining < 1 & minutes_remaining == 0)
+l1bp = mutate(
+  summarise(
+    group_by(
+      l1, 
+      name),
+    total = n(),
+    made = sum(shot_made_flag == 'shot_yes')
+  ),
+  perc_made = made/total
+)
+l1bp
+```

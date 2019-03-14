@@ -1,31 +1,52 @@
 ---
 title: "Workout 01"
-author: "C"
+author: "Casey Chadwell"
 output: github_document
 ---
-```{r}
+```{r echo=FALSE, results='hide'}
 library(dplyr)
 ```
 
 # Shooting Statistics for Select Golden State Warriors players
 
-Shooting statistics were once only made available to professionals, but the new world of open data is changing that. Now the data is available online to anyone who wants to see it! With that comes a great number of possibilities and insights on the game, even for amateur data analysts. These insights could be used for anyting from recruitment to instagram retweets, and mayve even for salary increases. 
+Shooting statistics were once only made available to professionals, but the new world of open data is changing that. Now the data is available online to anyone who wants to see it! With that comes a great number of possibilities and insights on the game, even for amateur data analysts. These insights could be used for anyting from recruitment to instagram retweets, and maybe even for salary increases. In this article, we will use some basic data techniques to gain insights into the 2016 season for Golden State Warriors players Andre Iguodala, Draymond Green, Kevin Durant, Klay Thompson, and Stephen Curry. First we will see where their shots, and missed shots, took place. Then we will examine their Effective Shooting Percentage. 
 
-One popularly quoted metric for a player's skill is their shooting average. But what does that mean? In this article, we will use some basic data techniques to gain insights into the 2016 season for Golden State Warriors players Andre Iguodala, Draymond Green, Kevin Durant, Klay Thompson, and Stephen Curry. First we will see where their shots, and missed shots, took place. Then we will examine their Effective Shooting Percentage. From there, we will see where the data leads and perhaps discover something unexpected. 
+# Background and Deffinitions
 
-## Background
+We will first look at a commonly used tool in the world of basketball analytics, namely shot charts. These are extensively by coaches in order to make plays and plan for specific offenders.(Sass) 
 
-For
+Next, we will examine shooting percentages and some other key statistics. According to an article by coack Jeff Haefner the four most important basketball statistics are _Field Goal Attempts_, _Effective Field Goal Percentage_, _Free Throw Attempts_, and _Free Throw Percentage_.(Haefner) He says that if your team's players does better in all four of these areas, you are all but gaurenteed a win. For the purpose of this article, the statistics are defined as follows:
 
-## Data
+1. _Field Goal Attempts_: The number of shots taken by the payer regardless of success or failure. This can be useful to determine what weight to give a player with a high or low shooting percentage. 
+
+2. _Effective Field Goal Percentage_: In this article, instead of the commonly used EFG%, we will difine this more simply as the total number of shots made (2PT or 3PT) divided by the total number of shots attempted. 
+
+3. _Free Throw Attempts_: The number of 3PT fiels goals attempted. 
+
+4. _Free Throw Percentage_: The number of free throws made divided by the number of free throws attempted. 
+
+## Data Preparation
+The data used in this project was initially obtained from the UC Berkeley Stat 133 GitHub repository at <https://github.com/ucb-stat133/stat133-hws>.
+
+The initial files were then modified using `make-shots-data-script.R` file which can be found in the [code](../code/make-shot-data-script.R) folder of this repo. This script updates the initially obtained data to include additional columns such as player name and minute of the game, in addition to combining the different files into one. If you are interested in learning more about the data, please refer to the [data dictionary](../data/data-dictionary.md).
 
 ## Analysis
+The shot charts for the 5 GSW players that was generated from the data is shown below. 
+
+```{r out.width='80%', echo = FALSE, fig.align='center'}
+knitr::include_graphics('../images/gsw-shot-charts.png')
+```
 
 ## Discussion
 
 ## Conclusions
 
 ## References
+"9 Stats That Every Serious Basketball Coach Should Track." Welcome to BREAKTHROUGH BASKETBALL, 
+<www.breakthroughbasketball.com/stats/9_stats_basketball_coach_should_track.html>.
+
+"Hubie Brown and Using Shot Charts To Improve Shooting Percentages." Welcome to BREAKTHROUGH BASKETBALL, 
+<www.breakthroughbasketball.com/stats/using-shot-charts.html>.
 
 ## Effective Shooting Percentage
 

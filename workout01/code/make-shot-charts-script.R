@@ -53,13 +53,13 @@ durant_shot_chart
 dev.off()
 
 pdf('../images/klay-thompson-shot-chart.pdf',width=6.5,height=5)
-thompson_shot_chart <- ggplot(data=kt) +
+klay_thompson_chart <- ggplot(data=kt) +
   annotation_custom(court_image,-250,250,-50,420) +
   geom_point(aes(x=x,y=y,color=shot_made_flag), size=0.75) +
   ylim(-50,420) +
-  ggtitle('Shot Chart: Klay Thompson (2016 season)') +
+  ggtitle('Shot Chart: Kevin Durant (2016 season)') +
   theme_minimal()
-thompson_shot_chart
+klay_thompson_chart
 dev.off()
 
 pdf('../images/stephen-curry-shot-chart.pdf',width=6.5,height=5)
@@ -89,7 +89,7 @@ aggregated_shot_chart <- ggplot(data= all_shots) +
   annotation_custom(court_image,-250,250,-50,420) +
   geom_point(aes(x=x,y=y,color=shot_made_flag), size=0.75) +
   ylim(-50,420) +
-  ggtitle('Shot Chartr: GSW (2016 season)') +
+  ggtitle('Shot Charts: GSW (2016 season)') +
   theme(legend.position = 'top') +
   facet_wrap( ~ name, nrow=2,ncol=3)
 aggregated_shot_chart

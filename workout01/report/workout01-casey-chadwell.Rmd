@@ -148,9 +148,12 @@ l1mbp
 ```
 
 ## Discussion
-From the shot charts, we can see that many players attempt a lot more shots than others. We can also see that some players have their so called 'sweet spots' and that they tend to 
+From the shot charts, we can see that many players attempt a lot more shots than others. We can also see that some players have their so called 'sweet spots' where they are more likely to make baskets. 
+
+From the percentages, we can see that the players vary not only on their percent made but also on their last minute shots. It is a popular thing in basketball to see the time running out and try and fit in one last throw, from this data we can see that some players are more successful than others. Andre Iguodala seems to be the leader of the pack in this regard, since his shooting percentage actually goes up. 
 
 ## Conclusions
+Data can be very useful in basketball, even for small things. It can be interesting to analyze and not very difficult for the novice data scientist. In the coming seasons, it will be interesting to see the impacts of the growing field of data anylitics on the sport of basketball. 
 
 ## References
 "9 Stats That Every Serious Basketball Coach Should Track." Welcome to BREAKTHROUGH BASKETBALL, 

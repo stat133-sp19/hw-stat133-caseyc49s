@@ -71,7 +71,8 @@ ui <- fluidPage(
               value = 1000,
               min = 1,
               max = 100000,
-              step = 500
+              step = 500,
+              pre = '$'
             ),
             sliderInput(
               'contribution',
@@ -79,7 +80,8 @@ ui <- fluidPage(
               value = 2000,
               min = 0,
               max = 50000,
-              step = 500
+              step = 500,
+              pre = '$'
             )
             ),
      column(4,
@@ -189,13 +191,18 @@ server <- function(input, output) {
      if (input$facet_bool) {
        the_plot <- the_plot + 
          facet_grid(. ~ variable) + 
-         geom_area(aes(fill = variable, alpha = 0.2), show.legend = FALSE) + 
+         geom_ribbon(alpha = 0.2, 
+                     aes(ymin = 0, 
+                         ymax = value, 
+                         fill = variable, 
+                         col = variable)) + 
          theme_bw()
      }
-     the_plot <- the_plot + labs(color = 'Contributions')
+     the_plot <- the_plot
      the_plot
      }) 
    output$balance <- renderPrint({modalities()})
+   
    
 }
 # Run the application 

@@ -1,0 +1,18 @@
+---
+title: "Introduction"
+author: "Casey Chadwell"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# This is a Vignette
+thidsafsajfdklsaf;dsa
+teawkrljeal;rjeka;

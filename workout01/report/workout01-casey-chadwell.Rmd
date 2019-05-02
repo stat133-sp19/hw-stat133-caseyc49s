@@ -132,7 +132,7 @@ m1_pt3
 ```
 
 ##### < 1 Minute Remaining Overall Effective Shooting % by Player
-```{r}
+```{r echo = FALSE}
 l1m = filter(all_shots, minutes_remaining < 1)
 l1mbp = mutate(
   summarise(

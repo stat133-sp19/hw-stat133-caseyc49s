@@ -9,10 +9,122 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, error=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
+library(binomial)
 ```
 
-# This is a Vignette
-thidsafsajfdklsaf;dsa
-teawkrljeal;rjeka;
+# Binomial Package
+This package is my __workout 3__ assignment for the Stat 133 class at UC Berkeley. The package contains functions, objects, and methods for binomial distributions.
+
+## Basic Calculations
+
+The most basic use of this package is to calculate statistics on binomial distributions such as mean, variance, mode, skewness, and kurtosis. 
+
+```{r}
+# set a number of trials and probability of success per trial
+num_trials <- 5
+prob_success <- 0.7
+```
+
+#### Mean
+```{r}
+bin_mean(num_trials, prob_success)
+```
+
+#### Variance
+```{r}
+bin_variance(num_trials, prob_success)
+```
+
+#### Mode
+```{r}
+bin_mode(num_trials, prob_success)
+```
+
+#### Skewness
+```{r}
+bin_skewness(num_trials, prob_success)
+```
+
+#### Kurtosis
+```{r}
+bin_kurtosis(num_trials, prob_success)
+```
+
+For these summary measures, note that the probability must be between 0 and 1 and the number of trials must be a nonnegative integer. If the input is invalid, an error message will be displayed. 
+
+```{r error = TRUE}
+# This will return an error
+bin_mean(-5, 0.5)
+
+# This will also return an error
+bin_kurtosis(1, 100)
+```
+
+## Creating Distribution Objects
+
+This package can also be used to create 2 different distribution objects, "bindis" and "bincum" that both inherit from "data.frame". 
+
+#### Binomial Distribution
+
+`"Binomial distribution"` objects are displayed like `data.frame` objects with columns `successes`, `probability` that shows the probability that the specified number of successes will be achieved in the trials. 
+```{r}
+# Setting the Distribution Arguments
+num_trials <- 5
+prob_success <- 0.5
+
+# Creating a Binomial Distribution Object
+basic_dist <- bin_distribution(num_trials, prob_success)
+
+# "bindis" displays like a data.frame
+basic_dist
+```
+
+This object can be plotted using `plot`. 
+
+```{r}
+# uses S3 generic method for plot
+plot(basic_dist)
+```
+
+#### Cumulative Binomial Distribution
+
+`"Cumulative Binomial Distribution"` objects are very similar to `"Binomial Distribution"` objects but with a third column showing the cumulative probability. 
+
+```{r}
+# Creating a Cumulative Binomial Distribution Object
+basic_cum <- bin_cumulative(num_trials, prob_success)
+
+# "bincum" displays like a data.frame
+basic_cum
+```
+
+The "bincum" object is also plotted using `plot`, but the mode of plotting is different than with "bindis".
+
+```{r}
+# uses S3 generic method for plot 
+plot(basic_cum)
+```
+
+## Binomial Variable Object
+
+Finally, this package includes a `"Binomial Variable"` object of class `"binvar"` that represents the random variable for a binomial distribution. To initialize a `"binvar"` object, simply call the `bin_variable` function. 
+
+```{r}
+# Create the object
+basic_var <- bin_variable(num_trials, prob_success)
+
+# Display the object
+basic_var
+```
+
+For easy viewing of the properties of your random variable, you can use the `summary` function. 
+
+```{r}
+# make summary
+basic_sum <- summary(basic_var)
+
+# Display summary
+basic_sum
+```
